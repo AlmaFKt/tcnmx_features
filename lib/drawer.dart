@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class myDrawer extends StatefulWidget {
@@ -21,7 +22,14 @@ class _myDrawerState extends State<myDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          //Header 
+          //Logo TecNM
+          SvgPicture.asset(
+            'images/TecNM_logo.svg',
+            width: 50,
+            height: 50,
+          ),
+
+          //Cabecera del Drawer
           UserAccountsDrawerHeader(
             accountEmail: StreamBuilder<User?>(
               stream: FirebaseAuth.instance.authStateChanges(),
@@ -38,28 +46,28 @@ class _myDrawerState extends State<myDrawer> {
               },
             ),
 
-            //To show the user's name in the drawer header
+            //Para mostrar el nombre del usuario
             accountName: StreamBuilder<User?>(
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
                 if (snapshot.hasData && snapshot.data!.displayName != null) {
-                  //user's display name 
+                  //user's display name
                   return Text(snapshot.data!.displayName!,
                       style: TextStyle(fontSize: 22.0));
                 } else {
                   return Text(
-                    'Estudiante', // Default or fallback name
+                    'Estudiante', // Predeterminado
                     style: TextStyle(fontSize: 20.0),
                   );
                 }
               },
             ),
             decoration: BoxDecoration(
-              color: Color.fromARGB(219, 46, 100, 226),
+              color: Color.fromARGB(255, 27, 58, 133),
             ),
           ),
 
-          //HOME BUTTON
+          //Credencial BUTTON
           ListTile(
             leading: const Icon(Icons.assignment_ind_sharp),
             title: const Text(
@@ -71,7 +79,7 @@ class _myDrawerState extends State<myDrawer> {
             },
           ),
 
-          //Search BUTTON 
+          //Biblioteca BUTTON
           ListTile(
               leading: const Icon(Icons.menu_book),
               title: const Text(
@@ -79,30 +87,85 @@ class _myDrawerState extends State<myDrawer> {
                 style: TextStyle(fontSize: 17.0),
               ),
               onTap: () {
-               //Get.offAll( HomePage());
+                //Get.offAll( HomePage());
               }),
 
-        ListTile(
-          leading: const Icon(Icons.email_outlined),
-          title: const Text(
-            'Correos Profesores',
-            style: TextStyle(fontSize: 17.0),
+          ListTile(
+            leading: const Icon(Icons.email_outlined),
+            title: const Text(
+              'Correos Profesores',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
           ),
-          onTap: () {
-            //Get.offAll(HomePage());
-          },
-        ),
-        
-        ListTile(
-          leading: const Icon(CupertinoIcons.question_circle),
-          title: const Text(
-            'Consultas',
-            style: TextStyle(fontSize: 17.0),
+
+          ListTile(
+            leading: const Icon(CupertinoIcons.question_circle),
+            title: const Text(
+              'Consultas',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
           ),
-          onTap: () {
-            //Get.offAll(HomePage());
-          },
-        ),
+
+          ListTile(
+            leading: const Icon(CupertinoIcons.person),
+            title: const Text(
+              'Mis datos personales',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(CupertinoIcons.check_mark_circled),
+            title: const Text(
+              'Validar horario',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.monetization_on_outlined),
+            title: const Text(
+              'Recursos financieros',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(CupertinoIcons.person_3),
+            title: const Text(
+              'Comite Academico',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.lock_person_outlined),
+            title: const Text(
+              'Cambiar password',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              //Get.offAll(HomePage());
+            },
+          ),
 
           //DIVIDER
           const Padding(
@@ -110,43 +173,43 @@ class _myDrawerState extends State<myDrawer> {
             child: Divider(),
           ),
 
-            ListTile(
-              leading: const Icon(Icons.logout_outlined),
-              title: const Text(
-                'Salir',
-                style: TextStyle(fontSize: 17.0),
-              ),
-              onTap: () async {
-                try {
-                  // Sign out the user
-                 // signUserOut();
-                  // Navigate to the login screen
-                  Get.offAll(() => ());
-                } catch (e) {
-                  // Error message
-                  String errorMessage =
-                      'An error occurred while signing out. Please try again.';
-
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Error'),
-                        content: Text(errorMessage),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop(); // Close the dialog
-                            },
-                            child: Text('OK'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
+          ListTile(
+            leading: const Icon(Icons.logout_outlined),
+            title: const Text(
+              'Salir',
+              style: TextStyle(fontSize: 17.0),
             ),
+            onTap: () async {
+              try {
+                // Sign out the user
+                // signUserOut();
+                // Navigate to the login screen
+                Get.offAll(() => ());
+              } catch (e) {
+                // Error message
+                String errorMessage =
+                    'An error occurred while signing out. Please try again.';
+
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Error'),
+                      content: Text(errorMessage),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
+            },
+          ),
         ],
       ),
     );
