@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'theme/theme_provider.dart';
 
 class myDrawer extends StatefulWidget {
   const myDrawer({super.key});
@@ -18,7 +20,7 @@ class _myDrawerState extends State<myDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color.fromARGB(217, 251, 251, 251),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -208,6 +210,17 @@ class _myDrawerState extends State<myDrawer> {
                   },
                 );
               }
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.toggle_off_outlined),
+            title: const Text(
+              'Modo',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
             },
           ),
         ],

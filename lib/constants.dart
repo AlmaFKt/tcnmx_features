@@ -32,8 +32,6 @@ var myAppBar = AppBar(
   ),
 );
 
-//Color de fondo de todas las interfaces responsivas
-var myBackground = Color.fromARGB(255, 246, 246, 246);
 
 //Widget para mostrar el saludo en la interfaz
 var GreetingWidget = Container(

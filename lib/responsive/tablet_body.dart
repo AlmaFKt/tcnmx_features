@@ -27,7 +27,7 @@ class _tabletBodyState extends State<tabletBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar,
-      backgroundColor: myBackground,
+      backgroundColor: Theme.of(context).colorScheme.background,
       drawer: myDrawer(),
       drawerScrimColor: Colors.transparent,
       body: Column(children: [

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tecnamex_features/theme/theme.dart';
 import 'package:tecnamex_features/constants.dart';
 import 'package:tecnamex_features/drawer.dart';
 
@@ -29,7 +30,7 @@ class _desktopBodyState extends State<desktopBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar,
-      backgroundColor: myBackground,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Row(
         children: [
           // Trayendo el Drawer dnetro del body

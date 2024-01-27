@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tecnamex_features/theme/theme.dart';
 import 'package:tecnamex_features/constants.dart';
 import 'package:tecnamex_features/drawer.dart';
 
@@ -28,7 +29,7 @@ class _mobileBodyState extends State<mobileBody> {
     return Scaffold(
       //Utilizando var de constants
       appBar: myAppBar,
-      backgroundColor: myBackground,
+      backgroundColor: Theme.of(context).colorScheme.background,
       drawer: myDrawer(),
       drawerScrimColor: Colors.transparent,
       body: Column(children: [
