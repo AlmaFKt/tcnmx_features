@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'theme.dart'; // Import your theme.dart file
+import 'theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeData _themeData;
+   
+   // Getters para saber si el tema es claro u oscuro
+  bool get isLightMode => _themeData == lightMode;
 
   ThemeProvider() : _themeData = lightMode {
-    _themeData = lightMode; // Default theme
+    _themeData = lightMode; // Tema claro por defecto
   }
 
   get themeData => _themeData;
@@ -17,6 +19,6 @@ class ThemeProvider extends ChangeNotifier {
     } else {
       _themeData = lightMode;
     }
-    notifyListeners(); // Notify listeners of theme change
+    notifyListeners(); // Notifica a los widgets que estan escuchando
   }
 }

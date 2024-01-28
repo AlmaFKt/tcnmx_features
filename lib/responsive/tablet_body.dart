@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:tecnamex_features/constants.dart';
 import 'package:tecnamex_features/drawer.dart';
 
-class tabletBody extends StatefulWidget {
-  const tabletBody({super.key});
+class TabletBody extends StatefulWidget {
+  const TabletBody({Key? key});
 
   @override
-  State<tabletBody> createState() => _tabletBodyState();
+  State<TabletBody> createState() => _TabletBodyState();
 }
 
-class _tabletBodyState extends State<tabletBody> {
+class _TabletBodyState extends State<TabletBody> {
   late User? _user;
 
   @override
@@ -28,7 +28,7 @@ class _tabletBodyState extends State<tabletBody> {
     return Scaffold(
       appBar: myAppBar,
       backgroundColor: Theme.of(context).colorScheme.background,
-      drawer: myDrawer(),
+      drawer: MyDrawer(), // Change myDrawer() to MyDrawer()
       drawerScrimColor: Colors.transparent,
       body: Column(children: [
         //Var de saludo al usuario

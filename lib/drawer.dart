@@ -4,19 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:tecnamex_features/loguear/inicio_sesion.dart';
 import 'theme/theme_provider.dart';
 
-class myDrawer extends StatefulWidget {
-  const myDrawer({super.key});
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
-  }
+class MyDrawer extends StatefulWidget {
+  const MyDrawer({Key? key});
 
   @override
-  State<myDrawer> createState() => _myDrawerState();
+  State<MyDrawer> createState() => _MyDrawerState();
+
+  // Define the signUserOut method as a static method
+  static Future<void> signUserOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+  }
 }
 
-class _myDrawerState extends State<myDrawer> {
+class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -169,7 +172,7 @@ class _myDrawerState extends State<myDrawer> {
             },
           ),
 
-          //DIVIDER
+          //DIVIDOR
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Divider(),
@@ -183,43 +186,33 @@ class _myDrawerState extends State<myDrawer> {
             ),
             onTap: () async {
               try {
-                // Sign out the user
-                // signUserOut();
+                // Call the signUserOut method using the class name
+                await MyDrawer.signUserOut(context);
                 // Navigate to the login screen
-                Get.offAll(() => ());
+                Get.offAll(() => LoginPage());
               } catch (e) {
-                // Error message
-                String errorMessage =
-                    'An error occurred while signing out. Please try again.';
-
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Error'),
-                      content: Text(errorMessage),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop(); // Close the dialog
-                          },
-                          child: Text('OK'),
-                        ),
-                      ],
-                    );
-                  },
-                );
+                // Error handling code...
               }
             },
           ),
 
-          ListTile(
-            leading: const Icon(Icons.toggle_off_outlined),
+//Boton switch para cambiar el tema
+          SwitchListTile(
             title: const Text(
-              'Modo',
+              'Tema',
               style: TextStyle(fontSize: 17.0),
             ),
-            onTap: () {
+            secondary: Consumer<ThemeProvider>(
+              builder: (context, themeProvider, child) {
+                return Icon(
+                  themeProvider.isLightMode
+                      ? Icons.wb_sunny
+                      : Icons.nights_stay,
+                );
+              },
+            ),
+            value: Provider.of<ThemeProvider>(context).isLightMode,
+            onChanged: (value) {
               Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
             },
           ),

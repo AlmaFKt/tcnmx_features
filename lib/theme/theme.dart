@@ -6,15 +6,17 @@ final ThemeData lightMode =ThemeData(
   colorScheme: ColorScheme.light(
     background: Color.fromARGB(255, 246, 246, 246),
     primary: Color.fromARGB(255, 228, 229, 241),
-    secondary: Color.fromARGB(255, 204, 237, 241),
+    secondary: Color.fromARGB(255, 165, 165, 165),
+    surface: Color.fromARGB(255, 232, 240, 254),
   ),
 );
 
 final ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
-        background: Color.fromARGB(255, 33, 33, 33),
+        background: Color.fromARGB(255, 46, 45, 45),
     primary: Color.fromARGB(255, 66, 66, 66),
     secondary: Color.fromARGB(255, 97, 97, 97),
+    surface: Color.fromARGB(255, 86, 113, 161),
   ),
 );

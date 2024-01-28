@@ -30,7 +30,7 @@ class _mobileBodyState extends State<mobileBody> {
       //Utilizando var de constants
       appBar: myAppBar,
       backgroundColor: Theme.of(context).colorScheme.background,
-      drawer: myDrawer(),
+      drawer: MyDrawer(),
       drawerScrimColor: Colors.transparent,
       body: Column(children: [
         //here we are calling the var GreetingWidget from constants.dart
