@@ -110,29 +110,33 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
             ),
 
             const SizedBox(
-              height: 35,
+              height: 20,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
+                'Te llegará un correo para restablecer tu contraseña.',
+                style: GoogleFonts.heebo(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+
+            const SizedBox(
+              height: 25,
             ),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: MyTextField(
                 controller: emailController,
-                hintText: 'No. de control',
+                hintText: 'Email',
                 obscureText: false,
               ),
             ),
 
             const SizedBox(
               height: 30,
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: MyTextField(
-                controller: emailController,
-                hintText: 'Curp',
-                obscureText: false,
-              ),
             ),
 
             const SizedBox(

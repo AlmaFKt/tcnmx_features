@@ -35,6 +35,7 @@ class _mobileBodyState extends State<mobileBody> {
       body: Column(children: [
         //here we are calling the var GreetingWidget from constants.dart
         GreetingWidget,
+       
       ]),
     );
   }
