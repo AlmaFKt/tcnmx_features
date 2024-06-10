@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "628453973202",
+    "project_id": "tecnamex-a19c2",
+    "storage_bucket": "tecnamex-a19c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628453973202:android:1a89a959870f3fc5dae10b",
+        "android_client_info": {
+          "package_name": "com.example.tecnamex_features"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU1aWxOWasowlhWxNSBiJoHpKP52Dyr20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

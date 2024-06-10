@@ -43,11 +43,9 @@ class AuthChecker extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        // If user is authenticated, show main app content
         if (snapshot.hasData) {
           return mobileBody();
         }
-        // If user is not authenticated, show authentication page
         else {
           return AuthPage();
         }

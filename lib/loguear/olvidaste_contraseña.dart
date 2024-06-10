@@ -24,7 +24,7 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailController.text.trim());
-      // Always show a success message
+
       showDialog(
         context: context,
         builder: (context) {
@@ -35,7 +35,7 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
         },
       );
     } catch (e) {
-      // Show a dialog with the error message
+
       showDialog(
         context: context,
         builder: (context) {
@@ -82,11 +82,9 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
                       ),
                     ],
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
-
                   Text(
                     'INSTITUTO TECNOLÓGICO DE ZACATEPEC',
                     style: GoogleFonts.montserrat(fontSize: 20),
@@ -95,11 +93,9 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
                 ],
               ),
             ),
-
             const SizedBox(
               height: 20,
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
@@ -108,11 +104,9 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
                 textAlign: TextAlign.center,
               ),
             ),
-
             const SizedBox(
               height: 20,
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Text(
@@ -121,11 +115,9 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
                 textAlign: TextAlign.center,
               ),
             ),
-
             const SizedBox(
               height: 25,
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: MyTextField(
@@ -134,19 +126,18 @@ class _ForgotPwPageState extends State<ForgotPwPage> {
                 obscureText: false,
               ),
             ),
-
             const SizedBox(
               height: 30,
             ),
-
             const SizedBox(
               height: 30,
             ),
-
             MaterialButton(
               onPressed: pwReset,
-              child: Text('Proceder',
-              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),),
+              child: Text(
+                'Proceder',
+                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              ),
               color: Color.fromARGB(255, 52, 105, 179),
             ),
           ],

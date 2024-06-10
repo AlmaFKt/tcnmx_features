@@ -18,21 +18,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //Text editing controllers
+  //Text controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  //sign user in method event
+//Funcion para iniciar sesion
   void signUserIn() async {
-    // Validate email and password
     if (emailController.text.trim().isEmpty ||
         passwordController.text.isEmpty) {
-      // Empty email or password
       showErrorDialog('Please enter both email and password.');
       return;
     }
 
-    // Show loading indicator
     showDialog(
       context: context,
       builder: (context) {
@@ -48,20 +45,15 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
 
-      // Close the loading indicator
       Navigator.pop(context);
 
-      // Navigate to the home page
       Get.to(() => mobileBody());
     } on FirebaseAuthException catch (e) {
-      // Close the loading indicator
       Navigator.pop(context);
 
-      // Handle specific authentication errors
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
         showErrorDialog('Incorrect Email or Password');
       } else {
-        // Handle other authentication errors
         showErrorDialog('Incorrect Email or Password');
       }
     }
@@ -81,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null, // Set the appBar property to null
+      appBar: null,
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -112,20 +104,20 @@ class _LoginPageState extends State<LoginPage> {
                   height: 40,
                 ),
 
-                //(Welcome!) text
+                //Ingresa tu usuario text
                 Text('Ingresa tu usuario',
                     style: GoogleFonts.heebo(fontSize: 20)),
 
                 const SizedBox(
                   height: 20,
-                ), // this makes a type of space betweeno your objects
+                ),
 
                 //username textfield
                 MyTextField(
                   controller: emailController,
                   hintText: 'Usuario',
                   obscureText: false,
-                ), // u can find the code for this object in components
+                ),
 
                 const SizedBox(
                   height: 12,

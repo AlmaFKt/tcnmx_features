@@ -1,4 +1,3 @@
-// Class to avoid the DRY principle
 //Clase para evitar el principio DRY (no repetirte a ti mismo)
 
 //Con authStateChanges() podemos obtener el estado de la autenticación
@@ -11,7 +10,7 @@ class GreetingUtils {
     if (hour < 12) {
       return 'Buenos días';
     }
-    if (hour < 17) {
+    if (hour < 19) {
       return 'Buenas tardes';
     }
     return 'Buenas noches';
