@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:tecnamex_features/responsive/mobile_body.dart';
 import 'auth/firebase_auth.dart';
 import 'firebase_options.dart';
-import 'theme/theme_provider.dart'; // Import your main app
+import 'theme/theme_provider.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

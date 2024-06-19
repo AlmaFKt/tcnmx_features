@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:tecnamex_features/Drawer/CambiarPass.dart';
-import 'package:tecnamex_features/Drawer/CorreosProfs.dart';
-import 'package:tecnamex_features/Drawer/ValidarHora.dart';
-import 'package:tecnamex_features/theme/theme.dart';
-import 'package:tecnamex_features/constants.dart';
+import '../Drawer/CambiarPass.dart';
+import '../Drawer/CorreosProfs.dart';
+import '../Drawer/EvalDocente.dart';
+import '../Drawer/ValidarHora.dart';
+import '../constants.dart';
 import '../loguear/inicio_sesion.dart';
 import '../theme/theme_provider.dart';
 
@@ -24,9 +24,10 @@ class _mobileBodyState extends State<mobileBody> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
+    EvaluacionDocente(),
     CambiarPass(),
-    CorreosProfesores(),
     ValidarHorario(),
+    CorreosProfesores(), 
     // otras paginas
   ];
 
@@ -63,38 +64,40 @@ class _mobileBodyState extends State<mobileBody> {
             ),
             UserAccountsDrawerHeader(
               accountEmail: StreamBuilder<User?>(
-                stream: FirebaseAuth.instance.authStateChanges(),
-                builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-                  if (snapshot.hasData && snapshot.data!.email != null) {
-                    return Text(snapshot.data!.email!);
-                  } else {
-                    return GestureDetector(
-                      onTap: () {
-                        //Get.offAll(() => LoginPage());
-                      },
-                    );
-                  }
-                },
-              ),
+    stream: FirebaseAuth.instance.authStateChanges(),
+    builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+      // Asumimos que siempre hay un usuario logueado, por lo tanto, siempre debería haber un correo.
+      final email = snapshot.data?.email ?? 'No disponible';
+      return Text(email);
+    },
+  ),
               accountName: StreamBuilder<User?>(
-                stream: FirebaseAuth.instance.authStateChanges(),
-                builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-                  if (snapshot.hasData && snapshot.data!.displayName != null) {
-                    return Text(
-                      snapshot.data!.displayName!,
-                      style: TextStyle(fontSize: 22.0),
-                    );
-                  } else {
-                    return Text(
-                      'Estudiante',
-                      style: TextStyle(fontSize: 20.0),
-                    );
-                  }
-                },
-              ),
+    stream: FirebaseAuth.instance.authStateChanges(),
+    builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+      // Asumimos que siempre hay un usuario logueado, por lo tanto, siempre debería haber un nombre o se muestra 'Estudiante'.
+      final displayName = snapshot.data?.displayName ?? 'Estudiante';
+      return Text(
+        displayName,
+        style: TextStyle(fontSize: 22.0),
+      );
+    },
+  ),
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 27, 58, 133),
               ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.star_half),
+              title: const Text(
+                'Evaluación docente',
+                style: TextStyle(fontSize: 17.0),
+              ),
+              onTap: () {
+                setState(() {
+                  _currentIndex = 1;
+                });
+                Navigator.of(context).pop();
+              },
             ),
             ListTile(
               leading: const Icon(Icons.assignment_ind_sharp),
@@ -104,7 +107,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 1;
+                  _currentIndex = 2;
                 });
                 Navigator.of(context).pop();
               },
@@ -117,7 +120,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 2;
+                  _currentIndex = 3;
                 });
                 Navigator.of(context).pop();
               },
@@ -130,7 +133,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 3;
+                  _currentIndex = 4;
                 });
                 Navigator.of(context).pop();
               },
@@ -143,7 +146,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 4;
+                  _currentIndex = 5;
                 });
                 Navigator.of(context).pop();
               },
@@ -156,7 +159,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 5;
+                  _currentIndex = 6;
                 });
                 Navigator.of(context).pop();
               },
@@ -169,7 +172,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 6;
+                  _currentIndex = 7;
                 });
                 Navigator.of(context).pop();
               },
@@ -182,7 +185,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 7;
+                  _currentIndex = 8;
                 });
                 Navigator.of(context).pop();
               },
@@ -195,7 +198,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 8;
+                  _currentIndex = 9;
                 });
                 Navigator.of(context).pop();
               },
@@ -208,7 +211,7 @@ class _mobileBodyState extends State<mobileBody> {
               ),
               onTap: () {
                 setState(() {
-                  _currentIndex = 9;
+                  _currentIndex = 10;
                 });
                 Navigator.of(context).pop();
               },
